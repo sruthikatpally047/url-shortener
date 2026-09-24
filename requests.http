@@ -1,0 +1,30 @@
+@baseUrl = http://localhost:8080
+@code = spring-guide
+
+### Health
+GET {{baseUrl}}/actuator/health
+
+### Create (change alias before repeating; aliases are never reused)
+POST {{baseUrl}}/api/v1/links
+Content-Type: application/json
+
+{
+  "originalUrl": "https://example.com/articles/spring-boot",
+  "customAlias": "spring-guide",
+  "expiresAt": "2030-12-31T23:59:59Z"
+}
+
+### Metadata
+GET {{baseUrl}}/api/v1/links/{{code}}
+
+### Redirect (disable automatic redirect following in your HTTP client to inspect 302)
+GET {{baseUrl}}/r/{{code}}
+
+### Preview without recording a click
+HEAD {{baseUrl}}/r/{{code}}
+
+### Analytics
+GET {{baseUrl}}/api/v1/links/{{code}}/analytics
+
+### Deactivate
+DELETE {{baseUrl}}/api/v1/links/{{code}}

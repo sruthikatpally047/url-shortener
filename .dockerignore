@@ -1,0 +1,10 @@
+.git
+.gradle
+.idea
+build
+data
+.env
+*.iml
+docs
+scripts
+requests.http
